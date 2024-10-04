@@ -22,29 +22,33 @@
       font-weight: bold; /* Mantiene el texto en negrita */
     }
     
-    nav {
-      display: flex; /* Usar flexbox para alinear las cajitas */
-      justify-content: center; /* Centra las cajitas en la navegación */
-      gap: 15px; /* Espacio entre las cajitas */
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* Espacio entre las cajitas del nav */
+      margin-bottom: 20px;
     }
-    .nav-item {
-      background: white; /* Fondo blanco para la cajita de navegación */
-      border-radius: 8px; /* Bordes redondeados */
-      padding: 10px 15px; /* Espaciado interno */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    .nav-cajita {
+      padding: 10px;
+      background: #f4f4f4; /* Color de fondo de la cajita del nav */
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: black; /* Color del texto dentro de la cajita */
       text-align: center; /* Centra el texto dentro de la cajita */
-      transition: background 0.3s; /* Transición para el hover */
-    }
-    .nav-item:hover {
-      background: #f0f0f0; /* Color de fondo al pasar el mouse */
     }
     .container {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      gap: 20px; /* Espacio entre las cajitas */
+    }
+    .cajita {
+      padding: 15px;
+      background: #f4f4f4; /* Color de fondo de la cajita */
+      border-radius: 8px; /* Bordes redondeados */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+      color: black; /* Color del texto dentro de la cajita */
     }
     img {
       display: block;
