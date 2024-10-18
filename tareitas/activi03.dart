@@ -1,13 +1,13 @@
 
-// DULCERIADE CHOCOLATES
+// DULCERIA DE CHOCOLATES
 import 'dart:io';
 
 class Dulceria {
   Map<String, double> precios = {
     'Primor': 8.5,
     'Dulzura': 10.0,
-    'Tentación': 7.0,
-    'Explosión': 12.5,
+    'Tentacion': 7.0, 
+    'Explosion': 12.5, 
   };
 
   double calcularImporte(double precioUnitario, int cantidad) {
@@ -19,9 +19,9 @@ class Dulceria {
 
     if (cantidad < 5) {
       porcentajeDescuento = 0.04;
-    } else if (cantidad >= 5 && cantidad < 10) {
+    } else if (cantidad < 10) {
       porcentajeDescuento = 0.065;
-    } else if (cantidad >= 10 && cantidad < 15) {
+    } else if (cantidad < 15) {
       porcentajeDescuento = 0.09;
     } else {
       porcentajeDescuento = 0.115;
@@ -47,14 +47,28 @@ void main() {
     print('$tipo: S/. $precio');
   });
 
-  String tipoSeleccionado = stdin.readLineSync()!;
-  if (!dulceria.precios.containsKey(tipoSeleccionado)) {
-    print('Tipo de chocolate no válido.');
+  String tipoSeleccionado;
+  try {
+    tipoSeleccionado = stdin.readLineSync()!.trim();
+    if (!dulceria.precios.containsKey(tipoSeleccionado)) {
+      throw FormatException('Tipo de chocolate no válido.');
+    }
+  } catch (e) {
+    print(e);
     return;
   }
 
+  int cantidad;
   print('Ingresa la cantidad de chocolates:');
-  int cantidad = int.parse(stdin.readLineSync()!);
+  try {
+    cantidad = int.parse(stdin.readLineSync()!);
+    if (cantidad <= 0) {
+      throw FormatException('La cantidad debe ser un número mayor que cero.');
+    }
+  } catch (e) {
+    print(e);
+    return;
+  }
 
   double precioUnitario = dulceria.precios[tipoSeleccionado]!;
   double importeTotal = dulceria.calcularImporte(precioUnitario, cantidad);
